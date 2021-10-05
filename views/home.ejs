@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs"); %>
+
+<h1>Home</h1>
+<p>
+    <%= homeContent %>
+</p>
+
+<div class="mb-2">
+    <a href="/compose" class="float-right">
+        <button type="submit" class="btn btn-primary">Compose</button>
+    </a>
+</div>
+
+<% if(postsList.length !== 0){ %> 
+
+    <% postsList.forEach(function(post){ %>
+        <div>
+            <h1><%= post.title %></h1>
+            <p><%= post.body.substring(0, 310) + "..."; %></p>
+            <p><a href="/posts/<%= post.title %>">Read More</a></p>
+        </div>
+    <% }); %>
+
+<% }else{ %> 
+    <p>No posts to display...</p>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
